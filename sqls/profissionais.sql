@@ -16,6 +16,9 @@ SELECT DISTINCT
         WHEN PF.CBO IN ('225151', '223104', '225205') THEN 'Anestesiologista'
         WHEN PF.CBO IN ('225133') THEN 'Psiquiatra'
         WHEN pf.CBO LIKE '225%' OR pf.CBO LIKE '2231%' THEN 'Médico'
+        WHEN pf.CBO LIKE '2238%' THEN 'Fonoaudiólogo'
+        WHEN pf.CBO LIKE '2236%' THEN 'Fisioterapeuta'
+        WHEN pf.CBO = '223905' THEN 'Terapeuta Ocupacional'
         END AS categoria,
     CPF_PROF
 FROM Dados.cnes.PF
@@ -31,5 +34,8 @@ WHERE
         (PF.CBO = '322415') OR
         (PF.CBO IN ('223145', '2231F5', '2231F4', '225290', '225121')) OR -- Oncologista
         (PF.CBO IN ('225151', '223104', '225205')) OR -- Anestesiologista
-        (PF.CBO IN ('225133')) -- Psiquiatra
+        (PF.CBO IN ('225133')) OR -- Psiquiatra
+        (pf.CBO LIKE '2238%') OR -- Fonoaudiólogo
+        (pf.CBO LIKE '2236%') OR -- Fisioterapeuta
+        (pf.CBO = '223905') -- Terapeuta Ocupacional
     )
